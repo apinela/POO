@@ -235,7 +235,7 @@ public class Date {
 		} else
 			tmpDay=this.day+1;
 		
-		return new Date(tmpDay,tmpMonth,tmpYear);
+		return new Date(tmpYear,tmpMonth,tmpDay);
 	}
 	
 }
