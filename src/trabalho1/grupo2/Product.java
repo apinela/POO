@@ -14,7 +14,7 @@ import trabalho1.grupo1.Date;
 
 public abstract class Product {
 
-	protected String name;
+	private String name;
 	private Date startDate;
 	private Date endDate;
 
@@ -31,7 +31,7 @@ public abstract class Product {
 	public final String toString() {
 		return getDescription("");
 	}
-	
+
 	public abstract double getPrice();
 
 	public Date getStartDate() {

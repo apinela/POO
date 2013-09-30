@@ -13,12 +13,15 @@ package trabalho1.grupo2;
 import trabalho1.grupo1.Date;
 
 public class Program extends Product {
+	private String name;
 	private Product[] products;
 	private Date startDate = null;
 	private Date endDate = null;
+	private double price;
 
 	public Program(String name, int capacity, Product first) {
 		super(name, first.getStartDate(), first.getEndDate());
+		this.name = name;
 		this.products = new Product[capacity];
 
 		addProduct(first);
@@ -34,12 +37,12 @@ public class Program extends Product {
 				products[i] = product;
 				if (startDate == null)
 					startDate = product.getStartDate();
-				else if (product.getStartDate().compareTo(startDate) > 0)
+				else if (product.getStartDate().compareTo(startDate) < 0)
 					startDate = product.getStartDate();
 
 				if (endDate == null)
 					endDate = product.getEndDate();
-				else if (product.getEndDate().compareTo(endDate) < 0)
+				else if (product.getEndDate().compareTo(endDate) > 0)
 					endDate = product.getEndDate();
 
 				return true;
@@ -52,22 +55,24 @@ public class Program extends Product {
 
 	@Override
 	public double getPrice() {
-		// TODO Auto-generated method stub
-		return (Double) null;
+		price = 0;
+		for (Product p : products) {
+			price += p.getPrice();
+		}
+		return price;
 	}
 
 	public String getDescription(String prefix) {
-		int i = 0;
 		StringBuilder sb = new StringBuilder();
-		sb.append("De " + startDate + " a " + endDate + ", " + name);
-		do {
-			sb.append(prefix + "\t" + "De " + products[i].getStartDate()
-					+ " a " + products[i].getEndDate() + ", "
-					+ products[i].name + ", " 
-					+ (int) products[i].getPrice()
-					+ "€");
-			i++;
-		} while (products[i] != null);
+
+		sb.append(prefix + "De " + startDate + " a " + endDate + ", " + name
+				+ "\n");
+
+		for (Product p : products) {
+			sb.append(prefix + p.getDescription("  ") + "\n");
+		}
+
+		sb.append(prefix + "TOTAL: " + (int) getPrice() + "€");
 
 		return sb.toString();
 	}

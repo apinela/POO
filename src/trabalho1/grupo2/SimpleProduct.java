@@ -13,20 +13,22 @@ package trabalho1.grupo2;
 import trabalho1.grupo1.Date;
 
 public class SimpleProduct extends Product {
-
+	private String name;
 	private double price;
 
 	public SimpleProduct(String name, Date startDate, Date endDate, int price) {
 		super(name, startDate, endDate);
+		this.name = name;
 		this.price = price;
 	}
 
 	public SimpleProduct(String name, Date startDate, int numberOfDays,
 			int pricePerDay) {
 		super(name, startDate, getEndDate(startDate, numberOfDays));
+		this.name = name;
 		this.price = numberOfDays * pricePerDay;
 	}
-	
+
 	private static Date getEndDate(Date startDate, int numberOfDays) {
 		Date tmpEndDate = startDate;
 		for (int d = 0; d < numberOfDays; d++) {
@@ -37,11 +39,12 @@ public class SimpleProduct extends Product {
 
 	@Override
 	public double getPrice() {
-		return price;
+		return this.price;
 	}
 
 	@Override
 	public String getDescription(String prefix) {
-		return prefix + "De " + getStartDate() + " a " + getEndDate() + ", " + name + ", " + (int)price + "€";
+		return prefix + "De " + this.getStartDate() + " a " + this.getEndDate()
+				+ ", " + this.name + ", " + (int) this.getPrice() + "€";
 	}
 }
