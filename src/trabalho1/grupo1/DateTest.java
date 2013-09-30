@@ -84,6 +84,7 @@ public class DateTest {
 			System.out.println("Date.compareTo: "+new Date("01-01-2010").compareTo(new Date("01-01-2000")));
 			System.out.println("Date.compareTo: "+new Date().compareTo(new Date()));
 			System.out.println("Date.compareTo: "+new Date("01-01-2010").compareTo(new Date("01-01-2020")));
+			System.out.println("Date.compareTo: "+new Date("22-03-2012").compareTo(new Date("14-03-2012")));
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
