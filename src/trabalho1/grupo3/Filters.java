@@ -22,19 +22,8 @@ public class Filters {
 	}
 
 	public static Student[][] filterStudent(Student[] pooStudents) {
-		Student[] resOdd;
-		Student[] resEven;
-		Student[][] res = new Student[2][];
 		OddFilterCriteria odd = new OddFilterCriteria();
-		NotFilterCriteria even = new NotFilterCriteria(odd);
-
-		resOdd = filterStudents(pooStudents, odd);
-		resEven = filterStudents(pooStudents, even);
-
-		res[ODD] = resOdd;
-		res[EVEN] = resEven;
-
-		return res;
+		return seperate(pooStudents, odd);
 	}
 
 	public static Student[][] seperate(Student[] pooStudents,
@@ -52,6 +41,13 @@ public class Filters {
 		res[IS_OUT_CRITERIA] = resOutCriteria;
 
 		return res;
+	}
+
+	public static Student[][] filterStudentByCorse(Student[] iselStudents) {
+		CourseFilterCriteria courseFilter = new CourseFilterCriteria(
+				iselStudents[0].courseId);
+		return seperate(iselStudents, courseFilter);
+
 	}
 
 }
