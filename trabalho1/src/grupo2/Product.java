@@ -8,9 +8,9 @@
  * Contributors:
  *     André Pinela - ISEL Student 38603 - initial API and implementation
  ******************************************************************************/
-package trabalho1.grupo2;
+package grupo2;
 
-import trabalho1.grupo1.Date;
+import grupo1.Date;
 
 public abstract class Product {
 

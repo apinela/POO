@@ -8,7 +8,7 @@
  * Contributors:
  *     André Pinela - ISEL Student 38603 - initial API and implementation
  ******************************************************************************/
-package trabalho1.grupo4;
+package grupo4;
 
 public class Collection extends ShelveItem {
 

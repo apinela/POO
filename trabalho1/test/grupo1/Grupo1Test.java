@@ -8,13 +8,14 @@
  * Contributors:
  *     André Pinela - ISEL Student 38603 - initial API and implementation
  ******************************************************************************/
-package trabalho1.grupo1;
+package grupo1;
 
 import static org.junit.Assert.fail;
+import grupo1.Date;
 
 import org.junit.Test;
 
-public class DateTest {
+public class Grupo1Test {
 
 	private static final int[] MONTH_DAYS_COMMON_YEAR = { 31, 28, 31, 30, 31,
 			30, 31, 31, 30, 31, 30, 31 };

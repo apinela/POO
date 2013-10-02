@@ -8,7 +8,7 @@
  * Contributors:
  *     André Pinela - ISEL Student 38603 - initial API and implementation
  ******************************************************************************/
-package trabalho1.grupo3;
+package grupo3;
 
 public class CourseFilterCriteria extends FilterCriteria {
 

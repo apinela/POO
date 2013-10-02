@@ -8,10 +8,17 @@
  * Contributors:
  *     André Pinela - ISEL Student 38603 - initial API and implementation
  ******************************************************************************/
-package trabalho1.grupo3;
+package grupo3;
 
-public abstract class FilterCriteria {
+import static org.junit.Assert.*;
 
-	abstract boolean filter(Student student, int i);
+import org.junit.Test;
+
+public class Grupo3Test {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
 
 }

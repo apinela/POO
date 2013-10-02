@@ -8,7 +8,7 @@
  * Contributors:
  *     André Pinela - ISEL Student 38603 - initial API and implementation
  ******************************************************************************/
-package trabalho1.grupo1;
+package grupo1;
 
 import java.util.Calendar;
 

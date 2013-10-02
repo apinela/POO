@@ -8,24 +8,33 @@
  * Contributors:
  *     André Pinela - ISEL Student 38603 - initial API and implementation
  ******************************************************************************/
-package trabalho1.grupo4;
+package grupo4;
 
-public class Book extends ShelveItem {
+public abstract class ShelveItem {
+	private final String name; // Nome do elemento
+	private int stand; // Prateleira em que se encontra
+	private boolean isAvailable = true; // Indica se o elemento está disponível
 
-	private String authors;
-
-	public Book(String n, int stand, String authors) {
-		super(n, stand);
-		this.authors = authors;
+	public ShelveItem(String n, int stand) {
+		this.name = n;
+		this.stand = stand;
 	}
 
-	@Override
-	public boolean isOfSameType(ShelveItem item) {
-		return item.getClass().getName().equals(this.getClass().getName());
+	public boolean match(String n) {
+		return name.equals(n);
+	}
+
+	public boolean isAvaliable() {
+		return isAvailable;
+	}
+
+	public void setAvaliable(boolean state) {
+		isAvailable = state;
 	}
 
 	public String toString() {
-		return super.toString() + ": " + authors;
+		return stand + ": " + name;
 	}
 
+	public abstract boolean isOfSameType(ShelveItem item);
 }

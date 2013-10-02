@@ -8,17 +8,17 @@
  * Contributors:
  *     André Pinela - ISEL Student 38603 - initial API and implementation
  ******************************************************************************/
-package trabalho1.grupo3;
+package grupo4;
 
-public class OddFilterCriteria extends FilterCriteria {
+import static org.junit.Assert.*;
 
-	@Override
-	boolean filter(Student student, int i) {
-		if (i % 2 == 0) {
-			return false;
-		} else {
-			return true;
-		}
+import org.junit.Test;
+
+public class Grupo4Test {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
 	}
 
 }

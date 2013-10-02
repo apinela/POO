@@ -8,19 +8,14 @@
  * Contributors:
  *     André Pinela - ISEL Student 38603 - initial API and implementation
  ******************************************************************************/
-package trabalho1.grupo3;
+package grupo3;
 
-public class NotFilterCriteria extends FilterCriteria {
+public class Student {
+	public String name;
+	public int courseId;
 
-	private FilterCriteria inverseCriteria;
-
-	public NotFilterCriteria(FilterCriteria inverseCriteria) {
-		this.inverseCriteria = inverseCriteria;
+	public Student(String name, int courseId) {
+		this.name = name;
+		this.courseId = courseId;
 	}
-
-	@Override
-	boolean filter(Student student, int i) {
-		return !this.inverseCriteria.filter(student, i);
-	}
-
 }
