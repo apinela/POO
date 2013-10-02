@@ -15,15 +15,23 @@ import java.util.Calendar;
 public class Date {
 
 	private static final int[] MONTH_DAYS_COMMON_YEAR = { 31, 28, 31, 30, 31,
-			30, 31, 31, 30, 31, 30, 31 };
+			30, 31, 31, 30, 31, 30, 31 }; // Define days by each month for a common year (365 days)
 	private static final int[] MONTH_DAYS_LEAP_YEAR = { 31, 29, 31, 30, 31, 30,
-			31, 31, 30, 31, 30, 31 };
+			31, 31, 30, 31, 30, 31 }; // Define days by each month for a leap year (366 days)
 
-	private int year;
-	private int month;
-	private int day;
-	private int[] monthDays;
+	private int year; // field to hold year value
+	private int month; // field to hold month value
+	private int day; // field to hold day value
+	private int[] monthDays; // array that holds days by each month for the year set in constructor
 
+
+	/**
+	 * Initialize Date with year, month and day as separated integers.
+	 * 
+	 * @param year Year.
+	 * @param month Month.
+	 * @param day Day.
+	 */
 	public Date(int year, int month, int day) {
 
 		this.year = year;
@@ -38,14 +46,22 @@ public class Date {
 
 	}
 
+	/**
+	 * Initialize Date with year, month and day passed as String.
+	 * 
+	 * @param str Syntax must be "DD-MM-YYYY".
+	 */
 	public Date(String str) {
 
 		try {
 
 			/*
 			 * str syntax: DD-MM-YYYY
-			 * 			   ^^ ^^ ^^^^
-			 * 	split map:  0  1    2
+			 * 
+			 * split map:
+			 * 	DD -> 0
+			 * 	MM -> 1
+			 * 	YYYY -> 2
 			 */
 
 			String[] tmpDate = str.split("-");
@@ -65,6 +81,9 @@ public class Date {
 
 	}
 
+	/**
+	 * Initialize Date with current year, month and day.
+	 */
 	public Date() {
 
 		Calendar currDateTime = Calendar.getInstance();
@@ -81,6 +100,12 @@ public class Date {
 
 	}
 
+	/**
+	 * Verifies if year is common or leap.
+	 * 
+	 * @param year Year to check.
+	 * @return True if is a leap year or False if is a common year.
+	 */
 	public static boolean isLeapYear(int year) {
 
 		if (year % 400 == 0)
@@ -91,12 +116,17 @@ public class Date {
 
 	}
 
-	private void initializeClass() throws Exception {
+	/**
+	 * Initialize all necessary variables needed by this class
+	 * 
+	 * @throws IllegalArgumentException If day/month does not exist in some context.
+	 */
+	private void initializeClass() throws IllegalArgumentException {
 
 		/* Validate Month */
 		
 		if (this.month > 12 && this.month < 1)
-			throw new Exception("Wrong month.");
+			throw new IllegalArgumentException("Wrong month.");
 
 		/* Validate Day */
 
@@ -107,10 +137,17 @@ public class Date {
 		}
 
 		if (this.day > this.monthDays[this.month - 1] && this.month < 1)
-			throw new Exception("Wrong day for month and/or year context.");
+			throw new IllegalArgumentException("Wrong day for month and/or year context.");
 
 	}
 
+	/**
+	 * Gets the number of days/last day that a month have.
+	 * 
+	 * @param year Year.
+	 * @param month Month.
+	 * @return Number of days that month have in year context.
+	 */
 	private static int getLastDayOfMonthByYear(int year, int month) {
 		if (isLeapYear(year)) {
 			return MONTH_DAYS_LEAP_YEAR[month - 1];
@@ -119,6 +156,11 @@ public class Date {
 		}
 	}
 
+	/**
+	 * Returns this class representation of String.  
+	 * 
+	 * @return A string in the following syntax: DD-MM-YYYY
+	 */
 	public String toString() {
 
 		String tmpDay = (String.valueOf(this.day).length() == 1) ? "0"
@@ -130,12 +172,25 @@ public class Date {
 		return tmpDay + "-" + tmpMonth + "-" + tmpYear;
 	}
 
+	
+	/**
+	 * Check if this object have the same numerical representation of d.
+	 * 
+	 * @param d Date to check to.
+	 * @return True if year, month and day of this object is equal to the ones of d object.
+	 */
 	public boolean equals(Date d) {
 
 		return this.toString().equals(d.toString());
 
 	}
 
+	/**
+	 * Compares this object date with d Date.
+	 * 
+	 * @param d Date to compare to.
+	 * @return 0 if this object date is equal to d date, 1 if this object date is after to d date or -1 if if this object date is earlier to d date
+	 */
 	public int compareTo(Date d) {
 
 		String[] tmpNewDate = d.toString().split("-");
@@ -166,6 +221,9 @@ public class Date {
 		}
 	}
 
+	/**
+	 * @return Next day after this object date.
+	 */
 	public Date nextDate() {
 		int tmpDay = this.day;
 		int tmpMonth = this.month;
