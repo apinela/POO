@@ -43,7 +43,9 @@ public class Date {
 		try {
 
 			/*
-			 * str syntax: DD-MM-YYYY ^^ ^^ ^^^^ split map: 0 1 2
+			 * str syntax: DD-MM-YYYY
+			 * 			   ^^ ^^ ^^^^
+			 * 	split map:  0  1    2
 			 */
 
 			String[] tmpDate = str.split("-");
@@ -92,6 +94,7 @@ public class Date {
 	private void initializeClass() throws Exception {
 
 		/* Validate Month */
+		
 		if (this.month > 12 && this.month < 1)
 			throw new Exception("Wrong month.");
 
